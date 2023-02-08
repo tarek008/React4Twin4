@@ -6,7 +6,7 @@ function App() {
 
 
 
-
+//Question 3
 let students=[{name:'John',id:123,marks:98},
 {name:'Baba',id:101,marks:23},
 {name:'John',id:200,marks:45},
@@ -25,7 +25,7 @@ let totalMarks = students.reduce((acc, curr) => {
 
 console.log(totalMarks);
 
-
+//Question 4
 let Tab = [
   { id:1 , name: 'John', marks: 98 },
   { id:2 , name: 'Baba', marks: 23 },
@@ -45,11 +45,14 @@ console.log(search(Tab, 3));
   );
 }
 
-
+//Question 1 
 const str=["this","isssssssssss","esprit"]
 
 console.log(findLongestWord(str));
 
+
+
+//Question 2
 const array=[["a","b","c"],["b","c","a"],["d","f","f"]]
 
 const countOccurrences = (array) => {
