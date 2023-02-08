@@ -1,22 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-
+import {findLongestWord} from './Ecmascript/Ecmascript'
+import { search } from './Ecmascript/fonction';
 function App() {
 
-  const input=[["a","b","c"],["c","d","f"],["d","f","g"]]  
-const obj={}
-
-const occurence=(tab)=>{
-  tab.map((each)=>{
-  if (obj[each]){
-    obj[each]+=1
-  }else{
-    obj[each]=1
-  }  
-   
-})
-   return obj
-}
 
 
 
@@ -26,24 +13,56 @@ let students=[{name:'John',id:123,marks:98},
 {name:'Wick',id:115,marks:45}
 
 ]
-const summ=0
-const res = students.map(function(input){
- if(input.marks>50){
-  summ=summ+input.marks
- }
- return summ ;
-})
 
-const Tab={}
-Tab.push({nom:"Haythem"},{prenom:"Manoubi"})
+let totalMarks = students.reduce((acc, curr) => {
+  if (curr.marks < 50) {
+    acc += curr.marks + 15;
+  } else {
+    acc += curr.marks;
+  }
+  return acc;
+}, 0);
+
+console.log(totalMarks);
 
 
+let Tab = [
+  { id:1 , name: 'John', marks: 98 },
+  { id:2 , name: 'Baba', marks: 23 },
+  { id:3, name: 'Jane', marks: 45 },
+  { id:4 , name: 'Wick', marks: 85 }
+];
+
+
+
+Tab.push({ id:10 , name: 'New Name', marks: 50 });
+console.log(search(Tab, 3));
   
   return (
     <div className="App">
-        <p>Test:</p>
+         
     </div>
   );
 }
+
+
+const str=["this","isssssssssss","esprit"]
+
+console.log(findLongestWord(str));
+
+const array=[["a","b","c"],["b","c","a"],["d","f","f"]]
+
+const countOccurrences = (array) => {
+  return array.flat().reduce((acc, curr) => {
+    acc[curr] = (acc[curr] || 0) + 1;
+    return acc;
+  }, {});
+};
+
+
+console.log(countOccurrences(array))
+
+
+
 
 export default App;
