@@ -25,7 +25,7 @@ export default class Products extends Component{
     render(){
         return (
             <div>
-                <Alert variant="success" show={this.state?.alertVisible}><Alert.Heading>Hey, Welcome To Our Shop <strong>MyStore</strong></Alert.Heading>
+                <Alert variant="dark" show={this.state?.alertVisible}><Alert.Heading>Hey, Welcome To Our Shop <strong>MyStore</strong></Alert.Heading>
                 <p>Thank you for choosing our store, we hope you enjoy your shopping experience!</p></Alert>
                 <h1>Products</h1>
                 <Row>
