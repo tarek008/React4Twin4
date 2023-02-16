@@ -1,55 +1,38 @@
+
+import { Component } from "react";
 import Product from "./Product";
-import product1Image from '../assets/images/product1.webp'; // import the image file
-import {Alert } from 'react-bootstrap';
-import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Alert } from "react-bootstrap";
+import ProductsList from '../products.json';
+export default class Products extends Component{
+    constructor(props) {
+        super(props);
+        this.state ={alertVisible:false}
+        this.handleVisible = this.handleVisible.bind(this);
+    }
+    handleVisible = () => { 
+        this.setState({alertVisible:true})
+        setTimeout(() => { 
+            this.setState({alertVisible:false})
+        }, 3000);
+    } 
+    componentDidMount() {
+    this.handleVisible();
+    }
 
 
-
-const Products = () => {
-    const [showWelcome, setShowWelcome] = React.useState(true); 
-
-    React.useEffect(() => {
-    const timeoutId = setTimeout(() => setShowWelcome(false), 3000); 
-    return () => clearTimeout(timeoutId); 
-  }, []);
-    const product1 = {
-        image: {product1Image},
-        name: 'PC Lenovo',
-        description: 'Product Description',
-        price: '1400DT',
-        quantity:'10',
-        likes: 0
-      };
-      const product2 = {
-        name: 'Mouse',
-        description: 'Product Description',
-        price: '30DT',
-        quantity:'0',
-        likes: 10
-      };
-      const product3 = {
-        name: 'KeyBoard',
-        description: 'Product Description',
-        price: '70DT',
-        quantity:'18',
-        likes: 0
-      };
-    return ( 
-        <>
-            {showWelcome && (
-        <Alert variant="info" onClose={() => setShowWelcome(false)} dismissible>
-          <Alert.Heading>Welcome to our store!</Alert.Heading>
-          <p>
-            We have a wide selection of products at great prices. Take a look around and let us know if you have any questions.
-          </p>
-        </Alert>
-      )}
-
-            <Product product={product1}/>
-            <Product product={product2}/>
-            <Product product={product3}/>
-        </>
-     );
+    render(){
+        return (
+            <div>
+                <Alert variant="success" show={this.state?.alertVisible}><Alert.Heading>Hey, Welcome To Our Shop <strong>MyStore</strong></Alert.Heading>
+                <p>Thank you for choosing our store, we hope you enjoy your shopping experience!</p></Alert>
+                <h1>Products</h1>
+                <Row>
+        {ProductsList.map((prod,i)=>(<Col key={i}><Product  product={prod}></Product></Col>))}
+      </Row>
+            </div>
+     
+        );
+    }
 }
- 
-export default Products;
